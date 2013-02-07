@@ -1,5 +1,48 @@
 # Imageloader
 
+## Examples
+	//LOAD ALL IMAGES IN CONTAINER, TRIGGER CALLBACK WHEN ALL IMAGES HAVE FINISHED LOADING
+	$('#container').imageloader().allcomplete(function(data){
+		//fade in parent container after all descendent images have finished loading
+		$(this).fadeIn(200);
+	});
+
+	//LOAD ALL IMAGES IN CONTAINER, TRIGGER CALLBACK WHEN EACH IMAGE HAS FINISHED LOADING
+	$('#container').imageloader().complete(function(data){
+		//fade in each child image after it's finished loading
+		data.img.fadeIn(200);
+	});
+
+	//PRELOAD IMAGES, AND ATTACH THEM TO THE DOM ONCE LOADED
+	$('<img src="hires1.png"/><img src="hires2.png"/>').imageloader().allcomplete(function(){
+	  $(this).appendTo($('body'));
+	});
+
+	//ALTERNATE SYNTAX USING OPTIONS OBJECT
+	$('#container').imageloader({
+		async:true,
+		start:function(data){
+			//hide unloaded images as soon as they start loading
+			data.img.hide();
+		},
+		error:function(data){
+			//err... nothing to see here!
+			data.img.remove();
+		},
+		complete:function(data){
+			//fade in loaded images
+			data.img.fadeIn(200);
+		},
+		allcomplete:function(data){
+			alert('all images have loaded!');
+		}
+	});
+
+## Installation
+	<script src="jquery.js"></script>
+	<script src="dist/imageloader.min.js"></script>
+
+## Overview
 A simple utility to give developers more control over the loading of images.
 
 This enables the developer to control whether an array of images is loaded synchronously, asynchronously or asynchronously but with a maximum number of requests loading at any one time.
@@ -60,49 +103,6 @@ async: whether the images are loaded synchronously, asynchronously or asynchrono
 - async (true): load images asynchronously, i.e. at the same time (fastest, unordered)
 - async (false): load images syncronously, i.e. one after another (ordered, slowest)
 - async: (number): hybrid, load images asynchronously but with a maximum number of requests at any one time (fast, unordered)
-
-
-## Installation
-	<script src="jquery.js"></script>
-	<script src="dist/imageloader.min.js"></script>
-
-## Examples
-	//LOAD ALL IMAGES IN CONTAINER, TRIGGER CALLBACK WHEN ALL IMAGES HAVE FINISHED LOADING
-	$('#container').imageloader().allcomplete(function(data){
-		//fade in parent container after all descendent images have finished loading
-		$(this).fadeIn(200);
-	});
-
-	//LOAD ALL IMAGES IN CONTAINER, TRIGGER CALLBACK WHEN EACH IMAGE HAS FINISHED LOADING
-	$('#container').imageloader().complete(function(data){
-		//fade in each child image after it's finished loading
-		data.img.fadeIn(200);
-	});
-
-	//PRELOAD IMAGES, AND ATTACH THEM TO THE DOM ONCE LOADED
-	$('<img src="hires1.png"/><img src="hires2.png"/>').imageloader().allcomplete(function(){
-	  $(this).appendTo($('body'));
-	});
-
-	//ALTERNATE SYNTAX USING OPTIONS OBJECT
-	$('#container').imageloader({
-		async:true,
-		start:function(data){
-			//hide unloaded images as soon as they start loading
-			data.img.hide();
-		},
-		error:function(data){
-			//err... nothing to see here!
-			data.img.remove();
-		},
-		complete:function(data){
-			//fade in loaded images
-			data.img.fadeIn(200);
-		},
-		allcomplete:function(data){
-			alert('all images have loaded!');
-		}
-	});
 
 ## License
 Copyright (c) 2013 alan clarke  
