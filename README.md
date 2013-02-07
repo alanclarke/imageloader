@@ -30,9 +30,39 @@ Download the [production version][min] or the [development version][max].
 - Lightweight (just 2kb minified)
 - Unit tested
 
+## Documentation
+
+### Events
+- start: fires once an image has begun loading
+- complete: fires once an image has completed loading
+- error: fires if an image failed to load
+- allcomplete: fires once all images haved loaded
+
+N.B. the complete and allcomplete events can be chained onto the tail of the imageloader function, start and error must be passed in as options objects.
+
+
+### Event Parameters
+An object containing the following is passed to all event callbacks:
+
+- loaded: number of images which have loaded,
+- errored: number of images which have errored
+- images: the jquery image elements
+
+start, complete and error also get the following:
+- i: the index of the image being loaded
+- img: the jquery image element being loaded
+
+complete and error also get the following:
+- err: boolian indicating whether the image errored or not
+
+### Options
+async: whether the images are loaded synchronously, asynchronously or asynchronously with a maximimum number of simmultaneous requests
+- async (true): load images asynchronously, i.e. at the same time (fastest, unordered)
+- async (false): load images syncronously, i.e. one after another (ordered, slowest)
+- async: (number): hybrid, load images asynchronously but with a maximum number of requests at any one time (fast, unordered)
+
 
 ## Examples
-	```
 	<script src="jquery.js"></script>
 	<script src="dist/imageloader.min.js"></script>
 	<script>
@@ -82,38 +112,6 @@ Download the [production version][min] or the [development version][max].
 		});
 	})(jQuery);
 	</script>
-	```
-
-## Documentation
-
-### Events
-- start: fires once an image has begun loading
-- complete: fires once an image has completed loading
-- error: fires if an image failed to load
-- allcomplete: fires once all images haved loaded
-
-N.B. the complete and allcomplete events can be chained onto the tail of the imageloader function, start and error must be passed in as options objects.
-
-
-### Event Parameters
-An object containing the following is passed to all event callbacks:
-
-- loaded: number of images which have loaded,
-- errored: number of images which have errored
-- images: the jquery image elements
-
-start, complete and error also get the following:
-- i: the index of the image being loaded
-- img: the jquery image element
-
-complete and error also get the following:
-- err: boolian indicating whether the image errored or not
-
-### Options
-async: whether the images are loaded synchronously, asynchronously or asynchronously with a maximimum number of simmultaneous requests
-- async (true): load images asynchronously, i.e. at the same time (fastest, unordered)
-- async (false): load images syncronously, i.e. one after another (ordered, slowest)
-- async: (number): hybrid, load images asynchronously but with a maximum number of requests at any one time (fast, unordered)
 
 ## License
 Copyright (c) 2013 alan clarke  
