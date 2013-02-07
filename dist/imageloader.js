@@ -1,4 +1,4 @@
-/*! Imageloader - v0.1.0 - 2013-02-07
+/*! Imageloader - v0.1.2 - 2013-02-07
 * https://github.com/alanclarke/imageloader
 * Copyright (c) 2013 alan clarke; Licensed MIT, GPL */
 
@@ -59,7 +59,7 @@
       var s = this, loaded = 0, errored = 0, d = new $.Deferred();
       s.$images = []; s.images = [];
       s.opts = $.extend(true, {}, {
-          async: false
+          async: true
       }, options);
 
       $.each(s, function(i, $img){
