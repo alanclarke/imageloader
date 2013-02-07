@@ -1,4 +1,4 @@
-/*! Imageloader - v0.1.2 - 2013-02-07
+/*! Imageloader - v0.1.3 - 2013-02-07
 * https://github.com/alanclarke/imageloader
 * Copyright (c) 2013 alan clarke; Licensed MIT, GPL */
 
@@ -38,7 +38,7 @@
       var s = this;
       s.next++;
       setTimeout(function() {
-          if(s.opts.start) s.opts.start(img, i);
+          if(s.opts.start) { s.opts.start(img, i); }
           new Img(img.src, function(err, img){
               s.complete(err, img, i);
           });
@@ -47,7 +47,7 @@
 
   ImgLoader.prototype.complete = function(err, img, i){
       var s = this;
-      if(s.opts.complete) s.opts.complete(err, img, i);
+      if(s.opts.complete) { s.opts.complete(err, img, i); }
       if (!s.opts.async || typeof s.opts.async === "number") {
           if (s.next<s.opts.images.length) {
               s.loadImg(s.opts.images[s.next], s.next);
@@ -78,13 +78,13 @@
           images:s.images,
           async:s.opts.async,
           start:function(img, i){
-            if(s.opts.start) s.opts.start({
+            if(s.opts.start) { s.opts.start({
                   i:i,
                   img:s.$images[i],
                   loaded:loaded,
                   errored:errored,
                   images:s.$images
-            });
+            }); }
           },
           complete:function(err, img, i){
               var data = {
@@ -97,9 +97,9 @@
               };
               d.notifyWith(s, [data]);
               if(err){
-                  if(s.opts.error) s.opts.error(data);
+                  if(s.opts.error) { s.opts.error(data); }
               } else {
-                  if(s.opts.complete) s.opts.complete(data);
+                  if(s.opts.complete) { s.opts.complete(data); }
               }
               if(loaded===s.images.length){
                   delete data.img; delete data.err;

@@ -126,7 +126,7 @@
   asyncTest('images load asynchronously in batches (testing with 2)', 2, function() {
     var loading = 0, loaded = [], max_observed = 0, max = 2;
     function check_max(){
-      if(loading>max_observed) max_observed = loading;
+      if(loading>max_observed) { max_observed = loading; }
     }
 
     this.elems.imageloader({
@@ -139,8 +139,6 @@
         loading--;
         loaded.push(data.i);
     }).allcomplete(function(data){
-            console.log(loaded)
-
         var sync = true;
         for(var i=0;i<loaded.length;i++){
            sync &= i== loaded[i];
@@ -154,7 +152,7 @@
   asyncTest('images load asynchronously in batches (testing with 3)', 2, function() {
     var loading = 0, loaded = [], max_observed = 0, max = 3;
     function check_max(){
-      if(loading>max_observed) max_observed = loading;
+      if(loading>max_observed) { max_observed = loading; }
     }
 
     this.elems.imageloader({
@@ -167,10 +165,9 @@
         loading--;
         loaded.push(data.i);
     }).allcomplete(function(data){
-        console.log(loaded)
       var sync = true;
         for(var i=0;i<loaded.length;i++){
-           sync &= i== loaded[i];
+           sync &= i == loaded[i];
         }
         ok(!sync, 'all images loaded asynchronously');
         ok(max_observed<=max, 'no more than n images loading symultaneously');

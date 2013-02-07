@@ -2,7 +2,7 @@
   "name": "imageloader",
   "title": "Imageloader",
   "description": "Find out when your images have loaded - imageloader provides callbacks, chainable syntax and control over whether images are loaded syncronously, asynchronously or asynchronously with a maximum number of requests",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/alanclarke/imageloader",
   "author": {
     "name": "alan clarke",
