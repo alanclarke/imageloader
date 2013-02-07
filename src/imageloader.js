@@ -63,7 +63,7 @@
       var s = this, loaded = 0, errored = 0, d = new $.Deferred();
       s.$images = []; s.images = [];
       s.opts = $.extend(true, {}, {
-          async: false
+          async: true
       }, options);
 
       $.each(s, function(i, $img){

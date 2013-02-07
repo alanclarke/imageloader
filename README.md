@@ -56,7 +56,7 @@ complete and error also get the following:
 - err: boolian indicating whether the image errored or not
 
 ### Options
-async: whether the images are loaded synchronously, asynchronously or asynchronously with a maximimum number of simmultaneous requests
+async: whether the images are loaded synchronously, asynchronously or asynchronously with a maximimum number of simmultaneous requests. Default: true.
 - async (true): load images asynchronously, i.e. at the same time (fastest, unordered)
 - async (false): load images syncronously, i.e. one after another (ordered, slowest)
 - async: (number): hybrid, load images asynchronously but with a maximum number of requests at any one time (fast, unordered)
@@ -80,10 +80,7 @@ async: whether the images are loaded synchronously, asynchronously or asynchrono
 	});
 
 	//PRELOAD IMAGES, AND ATTACH THEM TO THE DOM ONCE LOADED
-	$('<img src="hires1.png"/><img src="hires2.png"/>').imageloader({
-			//load images with a maximum of two requests at any one time
-		async:2
-	}).allcomplete(function(){
+	$('<img src="hires1.png"/><img src="hires2.png"/>').imageloader().allcomplete(function(){
 	  $(this).appendTo($('body'));
 	});
 
